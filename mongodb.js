@@ -12,9 +12,24 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
   const db = client.db(databaseName)
 
-  db.collection('users').insertOne({
-    name: "Matluba",
-    surname: "Saydaliyeva",
-    relation: "Grandmother",
-  })
+  // db.collection('users').insertOne({
+  //   name: "Matluba",
+  //   surname: "Saydaliyeva",
+  //   relation: "Grandmother",
+  // })
+
+  db.collection('tasks').insertMany([
+    {
+      description: 'Clean the house',
+      completed: true,
+    },
+    {
+      description: 'Take apples from bazaar',
+      completed: false,
+    },
+    {
+      description: 'Read Javascript book',
+      completed: true,
+    },
+  ])
 })
