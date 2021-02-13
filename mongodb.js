@@ -1,9 +1,9 @@
-const mongodb = require('mongodb')
-
-const MongoClient = mongodb.MongoClient
+const { MongoClient, ObjectID } = require('mongodb')
 
 const connectionURL = 'mongodb://127.0.0.1:27017'
 const databaseName = 'task-manager'
+
+const id = new ObjectID()
 
 MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
   if (error) {
@@ -18,18 +18,18 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
   //   relation: "Grandmother",
   // })
 
-  db.collection('tasks').insertMany([
-    {
-      description: 'Clean the house',
-      completed: true,
-    },
-    {
-      description: 'Take apples from bazaar',
-      completed: false,
-    },
-    {
-      description: 'Read Javascript book',
-      completed: true,
-    },
-  ])
+  // db.collection('tasks').insertMany([
+  //   {
+  //     description: 'Clean the house',
+  //     completed: true,
+  //   },
+  //   {
+  //     description: 'Take apples from bazaar',
+  //     completed: false,
+  //   },
+  //   {
+  //     description: 'Read Javascript book',
+  //     completed: true,
+  //   },
+  // ])
 })
