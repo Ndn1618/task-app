@@ -12,24 +12,11 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
   const db = client.db(databaseName)
 
-  // db.collection('users').insertOne({
-  //   name: "Matluba",
-  //   surname: "Saydaliyeva",
-  //   relation: "Grandmother",
-  // })
+  db.collection('users').findOne({ name: 'Matluba' }, (error, user) => {
+    console.log(user)
+  })
 
-  // db.collection('tasks').insertMany([
-  //   {
-  //     description: 'Clean the house',
-  //     completed: true,
-  //   },
-  //   {
-  //     description: 'Take apples from bazaar',
-  //     completed: false,
-  //   },
-  //   {
-  //     description: 'Read Javascript book',
-  //     completed: true,
-  //   },
-  // ])
+  db.collection('tasks').find({ completed: true }).toArray((error, tasks) => {
+    console.log(tasks)
+  })
 })
