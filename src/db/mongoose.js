@@ -4,6 +4,7 @@ const validator = require('validator')
 mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api', {
   useNewUrlParser: true,
   useCreateIndex: true,
+  useUnifiedTopology: true,
 })
 
 const User = mongoose.model('User', {
@@ -23,6 +24,17 @@ const User = mongoose.model('User', {
       }
     }
   },
+  password: {
+    type: String,
+    trim: true,
+    minlength: 7,
+    required: true,
+    validate(value) {
+      if (value.toLowerCase().includes('password')) {
+        throw new Error('Password can not include the word `password`!')
+      }
+    }
+  },
   age: {
     type: Number,
     trim: true,
@@ -37,7 +49,8 @@ const User = mongoose.model('User', {
 
 const me = new User({
   name: "        Dilbar",
-  email: "Ndn1618@gmail.com        "
+  email: "Ndn1618@gmail.com        ",
+  password: "Ndn1618       "
 })
 
 me.save().then(() => {
