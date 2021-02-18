@@ -79,7 +79,7 @@ app.post('/tasks', async (req, res) => {
 
 app.get('/tasks', async (_, res) => {
   try {
-    const tasks = Task.find({})
+    const tasks = await Task.find({})
     res.send(tasks)
   } catch (e) {
     res.status(500).send()
@@ -90,7 +90,7 @@ app.get('/tasks/:id', async (req, res) => {
   const _id = req.params.id
 
   try {
-    const task = Task.findById(_id)
+    const task = await Task.findById(_id)
     if (!task) {
       return res.status(404).send()
     }
