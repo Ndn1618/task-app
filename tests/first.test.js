@@ -1,7 +1,8 @@
-test('Hello world', () => {
+const { calculateTip } = require('../src/first')
 
-})
+test('Should calculate total with tip', () => {
 
-test('This should fail!', () => {
-  throw new Error('error')
+  const total = calculateTip(10, .3)
+  expect(total).toBe(13)
+
 })
