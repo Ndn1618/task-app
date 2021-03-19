@@ -1,5 +1,5 @@
 module.exports = {
-  serApiKey() {
+  setApiKey() {
 
   },
   send() {
