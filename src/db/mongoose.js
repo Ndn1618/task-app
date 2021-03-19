@@ -6,3 +6,5 @@ mongoose.connect(process.env.MONGODB_URL, {
   useUnifiedTopology: false,
   useFindAndModify: false,
 })
+
+// mongoose.set('bufferCommands', false);
